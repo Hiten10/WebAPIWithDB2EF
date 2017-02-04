@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="bdac0a825b3d4694a500488fe8d8fd0a" Name="Diagram1">
+        <EntityTypeShape EntityType="SAMPLEModel.ACT" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAMPLEModel.CATALOG" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAMPLEModel.CUSTOMER" Width="1.5" PointX="5.75" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAMPLEModel.DEPARTMENT" Width="1.5" PointX="3" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAMPLEModel.EMP_PHOTO" Width="1.5" PointX="3" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAMPLEModel.EMP_RESUME" Width="1.5" PointX="3" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAMPLEModel.EMPLOYEE" Width="1.5" PointX="0.75" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAMPLEModel.INVENTORY" Width="1.5" PointX="0.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAMPLEModel.PRODUCT" Width="1.5" PointX="2.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAMPLEModel.PRODUCTSUPPLIER" Width="1.5" PointX="10.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAMPLEModel.PROJACT" Width="1.5" PointX="7.5" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAMPLEModel.PROJECT" Width="1.5" PointX="5.25" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAMPLEModel.PURCHASEORDER" Width="1.5" PointX="8" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAMPLEModel.SUPPLIER" Width="1.5" PointX="10.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAMPLEModel.ADEFUSR" Width="1.5" PointX="11.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAMPLEModel.EMPPROJACT" Width="1.5" PointX="9.75" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAMPLEModel.ORG" Width="1.5" PointX="11.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAMPLEModel.STAFF" Width="1.5" PointX="4.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SAMPLEModel.STAFFG" Width="1.5" PointX="6.75" PointY="11.75" IsExpanded="true" />
+        <AssociationConnector Association="SAMPLEModel.RPAA" ManuallyRouted="false" />
+        <AssociationConnector Association="SAMPLEModel.FK_PO_CUST" ManuallyRouted="false" />
+        <AssociationConnector Association="SAMPLEModel.FK_PROJECT_1" ManuallyRouted="false" />
+        <AssociationConnector Association="SAMPLEModel.RDE" ManuallyRouted="false" />
+        <AssociationConnector Association="SAMPLEModel.RED" ManuallyRouted="false" />
+        <AssociationConnector Association="SAMPLEModel.ROD" ManuallyRouted="false" />
+        <AssociationConnector Association="SAMPLEModel.FK_EMP_PHOTO" ManuallyRouted="false" />
+        <AssociationConnector Association="SAMPLEModel.FK_EMP_RESUME" ManuallyRouted="false" />
+        <AssociationConnector Association="SAMPLEModel.FK_PROJECT_2" ManuallyRouted="false" />
+        <AssociationConnector Association="SAMPLEModel.REPAPA" ManuallyRouted="false" />
+        <AssociationConnector Association="SAMPLEModel.RPAP" ManuallyRouted="false" />
+        <AssociationConnector Association="SAMPLEModel.RPP" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

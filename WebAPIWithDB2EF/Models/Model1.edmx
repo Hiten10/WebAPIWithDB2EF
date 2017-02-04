@@ -1,0 +1,1192 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="SAMPLEModel.Store" Provider="IBM.Data.DB2" ProviderManifestToken="DB2/NT64, 11.01.0001, 4717215, 0" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ACT">
+          <Key>
+            <PropertyRef Name="ACTNO" />
+          </Key>
+          <Property Name="ACTNO" Type="smallint" Nullable="false" />
+          <Property Name="ACTKWD" Type="character" MaxLength="6" Unicode="false" Nullable="false" />
+          <Property Name="ACTDESC" Type="varchar" MaxLength="20" Unicode="false" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'SAMPLE.SONY.ADEFUSR' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ADEFUSR">
+          <Key>
+            <PropertyRef Name="NO_OF_EMPLOYEES" />
+          </Key>
+          <Property Name="WORKDEPT" Type="character" MaxLength="3" Unicode="false" />
+          <Property Name="NO_OF_EMPLOYEES" Type="integer" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CATALOG">
+          <Key>
+            <PropertyRef Name="NAME" />
+          </Key>
+          <Property Name="NAME" Type="varchar" MaxLength="128" Unicode="false" Nullable="false" />
+          <Property Name="CATLOG" Type="xml" Unicode="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'SAMPLE.SONY.CL_SCHED' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="CL_SCHED">
+          <Property Name="CLASS_CODE" Type="character" MaxLength="7" Unicode="false" />
+          <Property Name="DAY" Type="smallint" />
+          <Property Name="STARTING" Type="time" />
+          <Property Name="ENDING" Type="time" />
+        </EntityType>-->
+        <EntityType Name="CUSTOMER">
+          <Key>
+            <PropertyRef Name="CID" />
+          </Key>
+          <Property Name="CID" Type="bigint" Nullable="false" />
+          <Property Name="INFO" Type="xml" Unicode="false" />
+          <Property Name="HISTORY" Type="xml" Unicode="false" />
+        </EntityType>
+        <EntityType Name="DEPARTMENT">
+          <Key>
+            <PropertyRef Name="DEPTNO" />
+          </Key>
+          <Property Name="DEPTNO" Type="character" MaxLength="3" Unicode="false" Nullable="false" />
+          <Property Name="DEPTNAME" Type="varchar" MaxLength="36" Unicode="false" Nullable="false" />
+          <Property Name="MGRNO" Type="character" MaxLength="6" Unicode="false" />
+          <Property Name="ADMRDEPT" Type="character" MaxLength="3" Unicode="false" Nullable="false" />
+          <Property Name="LOCATION" Type="character" MaxLength="16" Unicode="false" />
+        </EntityType>
+        <EntityType Name="EMP_PHOTO">
+          <Key>
+            <PropertyRef Name="EMPNO" />
+            <PropertyRef Name="PHOTO_FORMAT" />
+          </Key>
+          <Property Name="EMPNO" Type="character" MaxLength="6" Unicode="false" Nullable="false" />
+          <Property Name="PHOTO_FORMAT" Type="varchar" MaxLength="10" Unicode="false" Nullable="false" />
+          <Property Name="PICTURE" Type="blob" MaxLength="102400" />
+        </EntityType>
+        <EntityType Name="EMP_RESUME">
+          <Key>
+            <PropertyRef Name="EMPNO" />
+            <PropertyRef Name="RESUME_FORMAT" />
+          </Key>
+          <Property Name="EMPNO" Type="character" MaxLength="6" Unicode="false" Nullable="false" />
+          <Property Name="RESUME_FORMAT" Type="varchar" MaxLength="10" Unicode="false" Nullable="false" />
+          <Property Name="RESUME" Type="clob" MaxLength="5120" Unicode="false" />
+        </EntityType>
+        <EntityType Name="EMPLOYEE">
+          <Key>
+            <PropertyRef Name="EMPNO" />
+          </Key>
+          <Property Name="EMPNO" Type="character" MaxLength="6" Unicode="false" Nullable="false" />
+          <Property Name="FIRSTNME" Type="varchar" MaxLength="12" Unicode="false" Nullable="false" />
+          <Property Name="MIDINIT" Type="character" MaxLength="1" Unicode="false" />
+          <Property Name="LASTNAME" Type="varchar" MaxLength="15" Unicode="false" Nullable="false" />
+          <Property Name="WORKDEPT" Type="character" MaxLength="3" Unicode="false" />
+          <Property Name="PHONENO" Type="character" MaxLength="4" Unicode="false" />
+          <Property Name="HIREDATE" Type="date" />
+          <Property Name="JOB" Type="character" MaxLength="8" Unicode="false" />
+          <Property Name="EDLEVEL" Type="smallint" Nullable="false" />
+          <Property Name="SEX" Type="character" MaxLength="1" Unicode="false" />
+          <Property Name="BIRTHDATE" Type="date" />
+          <Property Name="SALARY" Type="decimal" Precision="9" Scale="2" />
+          <Property Name="BONUS" Type="decimal" Precision="9" Scale="2" />
+          <Property Name="COMM" Type="decimal" Precision="9" Scale="2" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'SAMPLE.SONY.EMPMDC' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="EMPMDC">
+          <Property Name="EMPNO" Type="integer" />
+          <Property Name="DEPT" Type="integer" />
+          <Property Name="DIV" Type="integer" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'SAMPLE.SONY.EMPPROJACT' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="EMPPROJACT">
+          <Key>
+            <PropertyRef Name="EMPNO" />
+            <PropertyRef Name="PROJNO" />
+            <PropertyRef Name="ACTNO" />
+          </Key>
+          <Property Name="EMPNO" Type="character" MaxLength="6" Unicode="false" Nullable="false" />
+          <Property Name="PROJNO" Type="character" MaxLength="6" Unicode="false" Nullable="false" />
+          <Property Name="ACTNO" Type="smallint" Nullable="false" />
+          <Property Name="EMPTIME" Type="decimal" Precision="5" Scale="2" />
+          <Property Name="EMSTDATE" Type="date" />
+          <Property Name="EMENDATE" Type="date" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'SAMPLE.SONY.IN_TRAY' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="IN_TRAY">
+          <Property Name="RECEIVED" Type="timestamp" />
+          <Property Name="SOURCE" Type="character" MaxLength="8" Unicode="false" />
+          <Property Name="SUBJECT" Type="character" MaxLength="64" Unicode="false" />
+          <Property Name="NOTE_TEXT" Type="varchar" MaxLength="3000" Unicode="false" />
+        </EntityType>-->
+        <EntityType Name="INVENTORY">
+          <Key>
+            <PropertyRef Name="PID" />
+          </Key>
+          <Property Name="PID" Type="varchar" MaxLength="10" Unicode="false" Nullable="false" />
+          <Property Name="QUANTITY" Type="integer" />
+          <Property Name="LOCATION" Type="varchar" MaxLength="128" Unicode="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'SAMPLE.SONY.ORG' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ORG">
+          <Key>
+            <PropertyRef Name="DEPTNUMB" />
+          </Key>
+          <Property Name="DEPTNUMB" Type="smallint" Nullable="false" />
+          <Property Name="DEPTNAME" Type="varchar" MaxLength="14" Unicode="false" />
+          <Property Name="MANAGER" Type="smallint" />
+          <Property Name="DIVISION" Type="varchar" MaxLength="10" Unicode="false" />
+          <Property Name="LOCATION" Type="varchar" MaxLength="13" Unicode="false" />
+        </EntityType>
+        <EntityType Name="PRODUCT">
+          <Key>
+            <PropertyRef Name="PID" />
+          </Key>
+          <Property Name="PID" Type="varchar" MaxLength="10" Unicode="false" Nullable="false" />
+          <Property Name="NAME" Type="varchar" MaxLength="128" Unicode="false" />
+          <Property Name="PRICE" Type="decimal" Precision="30" Scale="2" />
+          <Property Name="PROMOPRICE" Type="decimal" Precision="30" Scale="2" />
+          <Property Name="PROMOSTART" Type="date" />
+          <Property Name="PROMOEND" Type="date" />
+          <Property Name="DESCRIPTION" Type="xml" Unicode="false" />
+        </EntityType>
+        <EntityType Name="PRODUCTSUPPLIER">
+          <Key>
+            <PropertyRef Name="PID" />
+            <PropertyRef Name="SID" />
+          </Key>
+          <Property Name="PID" Type="varchar" MaxLength="10" Unicode="false" Nullable="false" />
+          <Property Name="SID" Type="varchar" MaxLength="10" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PROJACT">
+          <Key>
+            <PropertyRef Name="PROJNO" />
+            <PropertyRef Name="ACTNO" />
+            <PropertyRef Name="ACSTDATE" />
+          </Key>
+          <Property Name="PROJNO" Type="character" MaxLength="6" Unicode="false" Nullable="false" />
+          <Property Name="ACTNO" Type="smallint" Nullable="false" />
+          <Property Name="ACSTAFF" Type="decimal" Precision="5" Scale="2" />
+          <Property Name="ACSTDATE" Type="date" Nullable="false" />
+          <Property Name="ACENDATE" Type="date" />
+        </EntityType>
+        <EntityType Name="PROJECT">
+          <Key>
+            <PropertyRef Name="PROJNO" />
+          </Key>
+          <Property Name="PROJNO" Type="character" MaxLength="6" Unicode="false" Nullable="false" />
+          <Property Name="PROJNAME" Type="varchar" MaxLength="24" Unicode="false" Nullable="false" />
+          <Property Name="DEPTNO" Type="character" MaxLength="3" Unicode="false" Nullable="false" />
+          <Property Name="RESPEMP" Type="character" MaxLength="6" Unicode="false" Nullable="false" />
+          <Property Name="PRSTAFF" Type="decimal" Precision="5" Scale="2" />
+          <Property Name="PRSTDATE" Type="date" />
+          <Property Name="PRENDATE" Type="date" />
+          <Property Name="MAJPROJ" Type="character" MaxLength="6" Unicode="false" />
+        </EntityType>
+        <EntityType Name="PURCHASEORDER">
+          <Key>
+            <PropertyRef Name="POID" />
+          </Key>
+          <Property Name="POID" Type="bigint" Nullable="false" />
+          <Property Name="STATUS" Type="varchar" MaxLength="10" Unicode="false" Nullable="false" />
+          <Property Name="CUSTID" Type="bigint" />
+          <Property Name="ORDERDATE" Type="date" />
+          <Property Name="PORDER" Type="xml" Unicode="false" />
+          <Property Name="COMMENTS" Type="varchar" MaxLength="1000" Unicode="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'SAMPLE.SONY.SALES' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="SALES">
+          <Property Name="SALES_DATE" Type="date" />
+          <Property Name="SALES_PERSON" Type="varchar" MaxLength="15" Unicode="false" />
+          <Property Name="REGION" Type="varchar" MaxLength="15" Unicode="false" />
+          <Property Name="SALES" Type="integer" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'SAMPLE.SONY.STAFF' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="STAFF">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="smallint" Nullable="false" />
+          <Property Name="NAME" Type="varchar" MaxLength="9" Unicode="false" />
+          <Property Name="DEPT" Type="smallint" />
+          <Property Name="JOB" Type="character" MaxLength="5" Unicode="false" />
+          <Property Name="YEARS" Type="smallint" />
+          <Property Name="SALARY" Type="decimal" Precision="7" Scale="2" />
+          <Property Name="COMM" Type="decimal" Precision="7" Scale="2" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'SAMPLE.SONY.STAFFG' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="STAFFG">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="smallint" Nullable="false" />
+          <Property Name="NAME" Type="vargraphic" MaxLength="9" Unicode="false" />
+          <Property Name="DEPT" Type="smallint" />
+          <Property Name="JOB" Type="graphic" MaxLength="5" Unicode="false" />
+          <Property Name="YEARS" Type="smallint" />
+          <Property Name="SALARY" Type="decimal" Precision="9" Scale="0" />
+          <Property Name="COMM" Type="decimal" Precision="9" Scale="0" />
+        </EntityType>
+        <EntityType Name="SUPPLIERS">
+          <Key>
+            <PropertyRef Name="SID" />
+          </Key>
+          <Property Name="SID" Type="varchar" MaxLength="10" Unicode="false" Nullable="false" />
+          <Property Name="ADDR" Type="xml" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_EMP_PHOTO">
+          <End Role="EMPLOYEE" Type="Self.EMPLOYEE" Multiplicity="1" />
+          <End Role="EMP_PHOTO" Type="Self.EMP_PHOTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMPLOYEE">
+              <PropertyRef Name="EMPNO" />
+            </Principal>
+            <Dependent Role="EMP_PHOTO">
+              <PropertyRef Name="EMPNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EMP_RESUME">
+          <End Role="EMPLOYEE" Type="Self.EMPLOYEE" Multiplicity="1" />
+          <End Role="EMP_RESUME" Type="Self.EMP_RESUME" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMPLOYEE">
+              <PropertyRef Name="EMPNO" />
+            </Principal>
+            <Dependent Role="EMP_RESUME">
+              <PropertyRef Name="EMPNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PO_CUST">
+          <End Role="CUSTOMER" Type="Self.CUSTOMER" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PURCHASEORDER" Type="Self.PURCHASEORDER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CUSTOMER">
+              <PropertyRef Name="CID" />
+            </Principal>
+            <Dependent Role="PURCHASEORDER">
+              <PropertyRef Name="CUSTID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PROJECT_1">
+          <End Role="DEPARTMENT" Type="Self.DEPARTMENT" Multiplicity="1" />
+          <End Role="PROJECT" Type="Self.PROJECT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DEPARTMENT">
+              <PropertyRef Name="DEPTNO" />
+            </Principal>
+            <Dependent Role="PROJECT">
+              <PropertyRef Name="DEPTNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PROJECT_2">
+          <End Role="EMPLOYEE" Type="Self.EMPLOYEE" Multiplicity="1" />
+          <End Role="PROJECT" Type="Self.PROJECT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMPLOYEE">
+              <PropertyRef Name="EMPNO" />
+            </Principal>
+            <Dependent Role="PROJECT">
+              <PropertyRef Name="RESPEMP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RDE">
+          <End Role="EMPLOYEE" Type="Self.EMPLOYEE" Multiplicity="0..1" />
+          <End Role="DEPARTMENT" Type="Self.DEPARTMENT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMPLOYEE">
+              <PropertyRef Name="EMPNO" />
+            </Principal>
+            <Dependent Role="DEPARTMENT">
+              <PropertyRef Name="MGRNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RED">
+          <End Role="DEPARTMENT" Type="Self.DEPARTMENT" Multiplicity="0..1" />
+          <End Role="EMPLOYEE" Type="Self.EMPLOYEE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DEPARTMENT">
+              <PropertyRef Name="DEPTNO" />
+            </Principal>
+            <Dependent Role="EMPLOYEE">
+              <PropertyRef Name="WORKDEPT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="REPAPA">
+          <End Role="PROJACT" Type="Self.PROJACT" Multiplicity="0..1" />
+          <End Role="EMPPROJACT" Type="Self.EMPPROJACT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROJACT">
+              <PropertyRef Name="PROJNO" />
+              <PropertyRef Name="ACTNO" />
+              <PropertyRef Name="ACSTDATE" />
+            </Principal>
+            <Dependent Role="EMPPROJACT">
+              <PropertyRef Name="PROJNO" />
+              <PropertyRef Name="ACTNO" />
+              <PropertyRef Name="EMSTDATE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ROD">
+          <End Role="DEPARTMENT" Type="Self.DEPARTMENT" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="DEPARTMENT1" Type="Self.DEPARTMENT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DEPARTMENT">
+              <PropertyRef Name="DEPTNO" />
+            </Principal>
+            <Dependent Role="DEPARTMENT1">
+              <PropertyRef Name="ADMRDEPT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RPAA">
+          <End Role="ACT" Type="Self.ACT" Multiplicity="1" />
+          <End Role="ACT1" Type="Self.ACT" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="ACT">
+              <PropertyRef Name="ACTNO" />
+            </Principal>
+            <Dependent Role="ACT1">
+              <PropertyRef Name="ACTNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RPAP">
+          <End Role="PROJECT" Type="Self.PROJECT" Multiplicity="1" />
+          <End Role="PROJACT" Type="Self.PROJACT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROJECT">
+              <PropertyRef Name="PROJNO" />
+            </Principal>
+            <Dependent Role="PROJACT">
+              <PropertyRef Name="PROJNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RPP">
+          <End Role="PROJECT" Type="Self.PROJECT" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PROJECT1" Type="Self.PROJECT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROJECT">
+              <PropertyRef Name="PROJNO" />
+            </Principal>
+            <Dependent Role="PROJECT1">
+              <PropertyRef Name="MAJPROJ" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SAMPLEModelStoreContainer">
+          <EntitySet Name="ACT" EntityType="Self.ACT" Schema="SONY" store:Type="Tables" />
+          <EntitySet Name="CATALOG" EntityType="Self.CATALOG" Schema="SONY" store:Type="Tables" />
+          <EntitySet Name="CUSTOMER" EntityType="Self.CUSTOMER" Schema="SONY" store:Type="Tables" />
+          <EntitySet Name="DEPARTMENT" EntityType="Self.DEPARTMENT" Schema="SONY" store:Type="Tables" />
+          <EntitySet Name="EMP_PHOTO" EntityType="Self.EMP_PHOTO" Schema="SONY" store:Type="Tables" />
+          <EntitySet Name="EMP_RESUME" EntityType="Self.EMP_RESUME" Schema="SONY" store:Type="Tables" />
+          <EntitySet Name="EMPLOYEE" EntityType="Self.EMPLOYEE" Schema="SONY" store:Type="Tables" />
+          <EntitySet Name="INVENTORY" EntityType="Self.INVENTORY" Schema="SONY" store:Type="Tables" />
+          <EntitySet Name="PRODUCT" EntityType="Self.PRODUCT" Schema="SONY" store:Type="Tables" />
+          <EntitySet Name="PRODUCTSUPPLIER" EntityType="Self.PRODUCTSUPPLIER" Schema="SONY" store:Type="Tables" />
+          <EntitySet Name="PROJACT" EntityType="Self.PROJACT" Schema="SONY" store:Type="Tables" />
+          <EntitySet Name="PROJECT" EntityType="Self.PROJECT" Schema="SONY" store:Type="Tables" />
+          <EntitySet Name="PURCHASEORDER" EntityType="Self.PURCHASEORDER" Schema="SONY" store:Type="Tables" />
+          <EntitySet Name="SUPPLIERS" EntityType="Self.SUPPLIERS" Schema="SONY" store:Type="Tables" />
+          <EntitySet Name="ADEFUSR" EntityType="Self.ADEFUSR" store:Type="Tables" store:Schema="SONY">
+            <DefiningQuery>SELECT 
+ADEFUSR.WORKDEPT AS WORKDEPT, 
+ADEFUSR.NO_OF_EMPLOYEES AS NO_OF_EMPLOYEES
+FROM SONY.ADEFUSR AS ADEFUSR</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="EMPPROJACT" EntityType="Self.EMPPROJACT" store:Type="Tables" store:Schema="SONY">
+            <DefiningQuery>SELECT 
+EMPPROJACT.EMPNO AS EMPNO, 
+EMPPROJACT.PROJNO AS PROJNO, 
+EMPPROJACT.ACTNO AS ACTNO, 
+EMPPROJACT.EMPTIME AS EMPTIME, 
+EMPPROJACT.EMSTDATE AS EMSTDATE, 
+EMPPROJACT.EMENDATE AS EMENDATE
+FROM SONY.EMPPROJACT AS EMPPROJACT</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ORG" EntityType="Self.ORG" store:Type="Tables" store:Schema="SONY">
+            <DefiningQuery>SELECT 
+ORG.DEPTNUMB AS DEPTNUMB, 
+ORG.DEPTNAME AS DEPTNAME, 
+ORG.MANAGER AS MANAGER, 
+ORG.DIVISION AS DIVISION, 
+ORG.LOCATION AS LOCATION
+FROM SONY.ORG AS ORG</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="STAFF" EntityType="Self.STAFF" store:Type="Tables" store:Schema="SONY">
+            <DefiningQuery>SELECT 
+STAFF.ID AS ID, 
+STAFF.NAME AS NAME, 
+STAFF.DEPT AS DEPT, 
+STAFF.JOB AS JOB, 
+STAFF.YEARS AS YEARS, 
+STAFF.SALARY AS SALARY, 
+STAFF.COMM AS COMM
+FROM SONY.STAFF AS STAFF</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="STAFFG" EntityType="Self.STAFFG" store:Type="Tables" store:Schema="SONY">
+            <DefiningQuery>SELECT 
+STAFFG.ID AS ID, 
+STAFFG.NAME AS NAME, 
+STAFFG.DEPT AS DEPT, 
+STAFFG.JOB AS JOB, 
+STAFFG.YEARS AS YEARS, 
+STAFFG.SALARY AS SALARY, 
+STAFFG.COMM AS COMM
+FROM SONY.STAFFG AS STAFFG</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_EMP_PHOTO" Association="Self.FK_EMP_PHOTO">
+            <End Role="EMPLOYEE" EntitySet="EMPLOYEE" />
+            <End Role="EMP_PHOTO" EntitySet="EMP_PHOTO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EMP_RESUME" Association="Self.FK_EMP_RESUME">
+            <End Role="EMPLOYEE" EntitySet="EMPLOYEE" />
+            <End Role="EMP_RESUME" EntitySet="EMP_RESUME" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PO_CUST" Association="Self.FK_PO_CUST">
+            <End Role="CUSTOMER" EntitySet="CUSTOMER" />
+            <End Role="PURCHASEORDER" EntitySet="PURCHASEORDER" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PROJECT_1" Association="Self.FK_PROJECT_1">
+            <End Role="DEPARTMENT" EntitySet="DEPARTMENT" />
+            <End Role="PROJECT" EntitySet="PROJECT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PROJECT_2" Association="Self.FK_PROJECT_2">
+            <End Role="EMPLOYEE" EntitySet="EMPLOYEE" />
+            <End Role="PROJECT" EntitySet="PROJECT" />
+          </AssociationSet>
+          <AssociationSet Name="RDE" Association="Self.RDE">
+            <End Role="EMPLOYEE" EntitySet="EMPLOYEE" />
+            <End Role="DEPARTMENT" EntitySet="DEPARTMENT" />
+          </AssociationSet>
+          <AssociationSet Name="RED" Association="Self.RED">
+            <End Role="DEPARTMENT" EntitySet="DEPARTMENT" />
+            <End Role="EMPLOYEE" EntitySet="EMPLOYEE" />
+          </AssociationSet>
+          <AssociationSet Name="REPAPA" Association="Self.REPAPA">
+            <End Role="PROJACT" EntitySet="PROJACT" />
+            <End Role="EMPPROJACT" EntitySet="EMPPROJACT" />
+          </AssociationSet>
+          <AssociationSet Name="ROD" Association="Self.ROD">
+            <End Role="DEPARTMENT" EntitySet="DEPARTMENT" />
+            <End Role="DEPARTMENT1" EntitySet="DEPARTMENT" />
+          </AssociationSet>
+          <AssociationSet Name="RPAA" Association="Self.RPAA">
+            <End Role="ACT" EntitySet="ACT" />
+            <End Role="ACT1" EntitySet="ACT" />
+          </AssociationSet>
+          <AssociationSet Name="RPAP" Association="Self.RPAP">
+            <End Role="PROJECT" EntitySet="PROJECT" />
+            <End Role="PROJACT" EntitySet="PROJACT" />
+          </AssociationSet>
+          <AssociationSet Name="RPP" Association="Self.RPP">
+            <End Role="PROJECT" EntitySet="PROJECT" />
+            <End Role="PROJECT1" EntitySet="PROJECT" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SAMPLEModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ACT">
+          <Key>
+            <PropertyRef Name="ACTNO" />
+          </Key>
+          <Property Name="ACTNO" Type="Int16" Nullable="false" />
+          <Property Name="ACTKWD" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="ACTDESC" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="ACT1" Relationship="Self.RPAA" FromRole="ACT" ToRole="ACT1" />
+          <NavigationProperty Name="ACT2" Relationship="Self.RPAA" FromRole="ACT1" ToRole="ACT" />
+        </EntityType>
+        <EntityType Name="CATALOG">
+          <Key>
+            <PropertyRef Name="NAME" />
+          </Key>
+          <Property Name="NAME" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CATLOG" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="CUSTOMER">
+          <Key>
+            <PropertyRef Name="CID" />
+          </Key>
+          <Property Name="CID" Type="Int64" Nullable="false" />
+          <Property Name="INFO" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="HISTORY" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="PURCHASEORDERs" Relationship="Self.FK_PO_CUST" FromRole="CUSTOMER" ToRole="PURCHASEORDER" />
+        </EntityType>
+        <EntityType Name="DEPARTMENT">
+          <Key>
+            <PropertyRef Name="DEPTNO" />
+          </Key>
+          <Property Name="DEPTNO" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="DEPTNAME" Type="String" MaxLength="36" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MGRNO" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="ADMRDEPT" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="LOCATION" Type="String" MaxLength="16" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="PROJECTs" Relationship="Self.FK_PROJECT_1" FromRole="DEPARTMENT" ToRole="PROJECT" />
+          <NavigationProperty Name="EMPLOYEE" Relationship="Self.RDE" FromRole="DEPARTMENT" ToRole="EMPLOYEE" />
+          <NavigationProperty Name="EMPLOYEEs" Relationship="Self.RED" FromRole="DEPARTMENT" ToRole="EMPLOYEE" />
+          <NavigationProperty Name="DEPARTMENT1" Relationship="Self.ROD" FromRole="DEPARTMENT" ToRole="DEPARTMENT1" />
+          <NavigationProperty Name="DEPARTMENT2" Relationship="Self.ROD" FromRole="DEPARTMENT1" ToRole="DEPARTMENT" />
+        </EntityType>
+        <EntityType Name="EMP_PHOTO">
+          <Key>
+            <PropertyRef Name="EMPNO" />
+            <PropertyRef Name="PHOTO_FORMAT" />
+          </Key>
+          <Property Name="EMPNO" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="PHOTO_FORMAT" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PICTURE" Type="Binary" MaxLength="102400" FixedLength="false" />
+          <NavigationProperty Name="EMPLOYEE" Relationship="Self.FK_EMP_PHOTO" FromRole="EMP_PHOTO" ToRole="EMPLOYEE" />
+        </EntityType>
+        <EntityType Name="EMP_RESUME">
+          <Key>
+            <PropertyRef Name="EMPNO" />
+            <PropertyRef Name="RESUME_FORMAT" />
+          </Key>
+          <Property Name="EMPNO" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="RESUME_FORMAT" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RESUME" Type="String" MaxLength="5120" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="EMPLOYEE" Relationship="Self.FK_EMP_RESUME" FromRole="EMP_RESUME" ToRole="EMPLOYEE" />
+        </EntityType>
+        <EntityType Name="EMPLOYEE">
+          <Key>
+            <PropertyRef Name="EMPNO" />
+          </Key>
+          <Property Name="EMPNO" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="FIRSTNME" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MIDINIT" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="LASTNAME" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="WORKDEPT" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="PHONENO" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Name="HIREDATE" Type="DateTime" Precision="0" />
+          <Property Name="JOB" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="EDLEVEL" Type="Int16" Nullable="false" />
+          <Property Name="SEX" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="BIRTHDATE" Type="DateTime" Precision="0" />
+          <Property Name="SALARY" Type="Decimal" Precision="9" Scale="2" />
+          <Property Name="BONUS" Type="Decimal" Precision="9" Scale="2" />
+          <Property Name="COMM" Type="Decimal" Precision="9" Scale="2" />
+          <NavigationProperty Name="DEPARTMENTs" Relationship="Self.RDE" FromRole="EMPLOYEE" ToRole="DEPARTMENT" />
+          <NavigationProperty Name="DEPARTMENT" Relationship="Self.RED" FromRole="EMPLOYEE" ToRole="DEPARTMENT" />
+          <NavigationProperty Name="EMP_PHOTO" Relationship="Self.FK_EMP_PHOTO" FromRole="EMPLOYEE" ToRole="EMP_PHOTO" />
+          <NavigationProperty Name="EMP_RESUME" Relationship="Self.FK_EMP_RESUME" FromRole="EMPLOYEE" ToRole="EMP_RESUME" />
+          <NavigationProperty Name="PROJECTs" Relationship="Self.FK_PROJECT_2" FromRole="EMPLOYEE" ToRole="PROJECT" />
+        </EntityType>
+        <EntityType Name="INVENTORY">
+          <Key>
+            <PropertyRef Name="PID" />
+          </Key>
+          <Property Name="PID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="QUANTITY" Type="Int32" />
+          <Property Name="LOCATION" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="PRODUCT">
+          <Key>
+            <PropertyRef Name="PID" />
+          </Key>
+          <Property Name="PID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NAME" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="PRICE" Type="Decimal" Precision="30" Scale="2" />
+          <Property Name="PROMOPRICE" Type="Decimal" Precision="30" Scale="2" />
+          <Property Name="PROMOSTART" Type="DateTime" Precision="0" />
+          <Property Name="PROMOEND" Type="DateTime" Precision="0" />
+          <Property Name="DESCRIPTION" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="PRODUCTSUPPLIER">
+          <Key>
+            <PropertyRef Name="PID" />
+            <PropertyRef Name="SID" />
+          </Key>
+          <Property Name="PID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PROJACT">
+          <Key>
+            <PropertyRef Name="PROJNO" />
+            <PropertyRef Name="ACTNO" />
+            <PropertyRef Name="ACSTDATE" />
+          </Key>
+          <Property Name="PROJNO" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="ACTNO" Type="Int16" Nullable="false" />
+          <Property Name="ACSTAFF" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="ACSTDATE" Type="DateTime" Precision="0" Nullable="false" />
+          <Property Name="ACENDATE" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="EMPPROJACTs" Relationship="Self.REPAPA" FromRole="PROJACT" ToRole="EMPPROJACT" />
+          <NavigationProperty Name="PROJECT" Relationship="Self.RPAP" FromRole="PROJACT" ToRole="PROJECT" />
+        </EntityType>
+        <EntityType Name="PROJECT">
+          <Key>
+            <PropertyRef Name="PROJNO" />
+          </Key>
+          <Property Name="PROJNO" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="PROJNAME" Type="String" MaxLength="24" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DEPTNO" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="RESPEMP" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="PRSTAFF" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="PRSTDATE" Type="DateTime" Precision="0" />
+          <Property Name="PRENDATE" Type="DateTime" Precision="0" />
+          <Property Name="MAJPROJ" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="DEPARTMENT" Relationship="Self.FK_PROJECT_1" FromRole="PROJECT" ToRole="DEPARTMENT" />
+          <NavigationProperty Name="EMPLOYEE" Relationship="Self.FK_PROJECT_2" FromRole="PROJECT" ToRole="EMPLOYEE" />
+          <NavigationProperty Name="PROJACTs" Relationship="Self.RPAP" FromRole="PROJECT" ToRole="PROJACT" />
+          <NavigationProperty Name="PROJECT1" Relationship="Self.RPP" FromRole="PROJECT" ToRole="PROJECT1" />
+          <NavigationProperty Name="PROJECT2" Relationship="Self.RPP" FromRole="PROJECT1" ToRole="PROJECT" />
+        </EntityType>
+        <EntityType Name="PURCHASEORDER">
+          <Key>
+            <PropertyRef Name="POID" />
+          </Key>
+          <Property Name="POID" Type="Int64" Nullable="false" />
+          <Property Name="STATUS" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CUSTID" Type="Int64" />
+          <Property Name="ORDERDATE" Type="DateTime" Precision="0" />
+          <Property Name="PORDER" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="COMMENTS" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CUSTOMER" Relationship="Self.FK_PO_CUST" FromRole="PURCHASEORDER" ToRole="CUSTOMER" />
+        </EntityType>
+        <EntityType Name="SUPPLIER">
+          <Key>
+            <PropertyRef Name="SID" />
+          </Key>
+          <Property Name="SID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ADDR" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ADEFUSR">
+          <Key>
+            <PropertyRef Name="NO_OF_EMPLOYEES" />
+          </Key>
+          <Property Name="WORKDEPT" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="NO_OF_EMPLOYEES" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EMPPROJACT">
+          <Key>
+            <PropertyRef Name="EMPNO" />
+            <PropertyRef Name="PROJNO" />
+            <PropertyRef Name="ACTNO" />
+          </Key>
+          <Property Name="EMPNO" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="PROJNO" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="ACTNO" Type="Int16" Nullable="false" />
+          <Property Name="EMPTIME" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="EMSTDATE" Type="DateTime" Precision="0" />
+          <Property Name="EMENDATE" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="PROJACT" Relationship="Self.REPAPA" FromRole="EMPPROJACT" ToRole="PROJACT" />
+        </EntityType>
+        <EntityType Name="ORG">
+          <Key>
+            <PropertyRef Name="DEPTNUMB" />
+          </Key>
+          <Property Name="DEPTNUMB" Type="Int16" Nullable="false" />
+          <Property Name="DEPTNAME" Type="String" MaxLength="14" FixedLength="false" Unicode="false" />
+          <Property Name="MANAGER" Type="Int16" />
+          <Property Name="DIVISION" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="LOCATION" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="STAFF">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int16" Nullable="false" />
+          <Property Name="NAME" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
+          <Property Name="DEPT" Type="Int16" />
+          <Property Name="JOB" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="YEARS" Type="Int16" />
+          <Property Name="SALARY" Type="Decimal" Precision="7" Scale="2" />
+          <Property Name="COMM" Type="Decimal" Precision="7" Scale="2" />
+        </EntityType>
+        <EntityType Name="STAFFG">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int16" Nullable="false" />
+          <Property Name="NAME" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
+          <Property Name="DEPT" Type="Int16" />
+          <Property Name="JOB" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="YEARS" Type="Int16" />
+          <Property Name="SALARY" Type="Decimal" Precision="9" Scale="0" />
+          <Property Name="COMM" Type="Decimal" Precision="9" Scale="0" />
+        </EntityType>
+        <Association Name="RPAA">
+          <End Role="ACT" Type="Self.ACT" Multiplicity="1" />
+          <End Role="ACT1" Type="Self.ACT" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="ACT">
+              <PropertyRef Name="ACTNO" />
+            </Principal>
+            <Dependent Role="ACT1">
+              <PropertyRef Name="ACTNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PO_CUST">
+          <End Role="CUSTOMER" Type="Self.CUSTOMER" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PURCHASEORDER" Type="Self.PURCHASEORDER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CUSTOMER">
+              <PropertyRef Name="CID" />
+            </Principal>
+            <Dependent Role="PURCHASEORDER">
+              <PropertyRef Name="CUSTID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PROJECT_1">
+          <End Role="DEPARTMENT" Type="Self.DEPARTMENT" Multiplicity="1" />
+          <End Role="PROJECT" Type="Self.PROJECT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DEPARTMENT">
+              <PropertyRef Name="DEPTNO" />
+            </Principal>
+            <Dependent Role="PROJECT">
+              <PropertyRef Name="DEPTNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RDE">
+          <End Role="EMPLOYEE" Type="Self.EMPLOYEE" Multiplicity="0..1" />
+          <End Role="DEPARTMENT" Type="Self.DEPARTMENT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMPLOYEE">
+              <PropertyRef Name="EMPNO" />
+            </Principal>
+            <Dependent Role="DEPARTMENT">
+              <PropertyRef Name="MGRNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RED">
+          <End Role="DEPARTMENT" Type="Self.DEPARTMENT" Multiplicity="0..1" />
+          <End Role="EMPLOYEE" Type="Self.EMPLOYEE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DEPARTMENT">
+              <PropertyRef Name="DEPTNO" />
+            </Principal>
+            <Dependent Role="EMPLOYEE">
+              <PropertyRef Name="WORKDEPT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ROD">
+          <End Role="DEPARTMENT" Type="Self.DEPARTMENT" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="DEPARTMENT1" Type="Self.DEPARTMENT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DEPARTMENT">
+              <PropertyRef Name="DEPTNO" />
+            </Principal>
+            <Dependent Role="DEPARTMENT1">
+              <PropertyRef Name="ADMRDEPT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EMP_PHOTO">
+          <End Role="EMPLOYEE" Type="Self.EMPLOYEE" Multiplicity="1" />
+          <End Role="EMP_PHOTO" Type="Self.EMP_PHOTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMPLOYEE">
+              <PropertyRef Name="EMPNO" />
+            </Principal>
+            <Dependent Role="EMP_PHOTO">
+              <PropertyRef Name="EMPNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EMP_RESUME">
+          <End Role="EMPLOYEE" Type="Self.EMPLOYEE" Multiplicity="1" />
+          <End Role="EMP_RESUME" Type="Self.EMP_RESUME" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMPLOYEE">
+              <PropertyRef Name="EMPNO" />
+            </Principal>
+            <Dependent Role="EMP_RESUME">
+              <PropertyRef Name="EMPNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PROJECT_2">
+          <End Role="EMPLOYEE" Type="Self.EMPLOYEE" Multiplicity="1" />
+          <End Role="PROJECT" Type="Self.PROJECT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMPLOYEE">
+              <PropertyRef Name="EMPNO" />
+            </Principal>
+            <Dependent Role="PROJECT">
+              <PropertyRef Name="RESPEMP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="REPAPA">
+          <End Role="PROJACT" Type="Self.PROJACT" Multiplicity="0..1" />
+          <End Role="EMPPROJACT" Type="Self.EMPPROJACT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROJACT">
+              <PropertyRef Name="PROJNO" />
+              <PropertyRef Name="ACTNO" />
+              <PropertyRef Name="ACSTDATE" />
+            </Principal>
+            <Dependent Role="EMPPROJACT">
+              <PropertyRef Name="PROJNO" />
+              <PropertyRef Name="ACTNO" />
+              <PropertyRef Name="EMSTDATE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RPAP">
+          <End Role="PROJECT" Type="Self.PROJECT" Multiplicity="1" />
+          <End Role="PROJACT" Type="Self.PROJACT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROJECT">
+              <PropertyRef Name="PROJNO" />
+            </Principal>
+            <Dependent Role="PROJACT">
+              <PropertyRef Name="PROJNO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RPP">
+          <End Role="PROJECT" Type="Self.PROJECT" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PROJECT1" Type="Self.PROJECT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PROJECT">
+              <PropertyRef Name="PROJNO" />
+            </Principal>
+            <Dependent Role="PROJECT1">
+              <PropertyRef Name="MAJPROJ" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SAMPLEEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ACTs" EntityType="Self.ACT" />
+          <EntitySet Name="CATALOGs" EntityType="Self.CATALOG" />
+          <EntitySet Name="CUSTOMERs" EntityType="Self.CUSTOMER" />
+          <EntitySet Name="DEPARTMENTs" EntityType="Self.DEPARTMENT" />
+          <EntitySet Name="EMP_PHOTO" EntityType="Self.EMP_PHOTO" />
+          <EntitySet Name="EMP_RESUME" EntityType="Self.EMP_RESUME" />
+          <EntitySet Name="EMPLOYEEs" EntityType="Self.EMPLOYEE" />
+          <EntitySet Name="INVENTORies" EntityType="Self.INVENTORY" />
+          <EntitySet Name="PRODUCTs" EntityType="Self.PRODUCT" />
+          <EntitySet Name="PRODUCTSUPPLIERs" EntityType="Self.PRODUCTSUPPLIER" />
+          <EntitySet Name="PROJACTs" EntityType="Self.PROJACT" />
+          <EntitySet Name="PROJECTs" EntityType="Self.PROJECT" />
+          <EntitySet Name="PURCHASEORDERs" EntityType="Self.PURCHASEORDER" />
+          <EntitySet Name="SUPPLIERS" EntityType="Self.SUPPLIER" />
+          <EntitySet Name="ADEFUSRs" EntityType="Self.ADEFUSR" />
+          <EntitySet Name="EMPPROJACTs" EntityType="Self.EMPPROJACT" />
+          <EntitySet Name="ORGs" EntityType="Self.ORG" />
+          <EntitySet Name="STAFFs" EntityType="Self.STAFF" />
+          <EntitySet Name="STAFFGs" EntityType="Self.STAFFG" />
+          <AssociationSet Name="RPAA" Association="Self.RPAA">
+            <End Role="ACT" EntitySet="ACTs" />
+            <End Role="ACT1" EntitySet="ACTs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PO_CUST" Association="Self.FK_PO_CUST">
+            <End Role="CUSTOMER" EntitySet="CUSTOMERs" />
+            <End Role="PURCHASEORDER" EntitySet="PURCHASEORDERs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PROJECT_1" Association="Self.FK_PROJECT_1">
+            <End Role="DEPARTMENT" EntitySet="DEPARTMENTs" />
+            <End Role="PROJECT" EntitySet="PROJECTs" />
+          </AssociationSet>
+          <AssociationSet Name="RDE" Association="Self.RDE">
+            <End Role="EMPLOYEE" EntitySet="EMPLOYEEs" />
+            <End Role="DEPARTMENT" EntitySet="DEPARTMENTs" />
+          </AssociationSet>
+          <AssociationSet Name="RED" Association="Self.RED">
+            <End Role="DEPARTMENT" EntitySet="DEPARTMENTs" />
+            <End Role="EMPLOYEE" EntitySet="EMPLOYEEs" />
+          </AssociationSet>
+          <AssociationSet Name="ROD" Association="Self.ROD">
+            <End Role="DEPARTMENT" EntitySet="DEPARTMENTs" />
+            <End Role="DEPARTMENT1" EntitySet="DEPARTMENTs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EMP_PHOTO" Association="Self.FK_EMP_PHOTO">
+            <End Role="EMPLOYEE" EntitySet="EMPLOYEEs" />
+            <End Role="EMP_PHOTO" EntitySet="EMP_PHOTO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EMP_RESUME" Association="Self.FK_EMP_RESUME">
+            <End Role="EMPLOYEE" EntitySet="EMPLOYEEs" />
+            <End Role="EMP_RESUME" EntitySet="EMP_RESUME" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PROJECT_2" Association="Self.FK_PROJECT_2">
+            <End Role="EMPLOYEE" EntitySet="EMPLOYEEs" />
+            <End Role="PROJECT" EntitySet="PROJECTs" />
+          </AssociationSet>
+          <AssociationSet Name="REPAPA" Association="Self.REPAPA">
+            <End Role="PROJACT" EntitySet="PROJACTs" />
+            <End Role="EMPPROJACT" EntitySet="EMPPROJACTs" />
+          </AssociationSet>
+          <AssociationSet Name="RPAP" Association="Self.RPAP">
+            <End Role="PROJECT" EntitySet="PROJECTs" />
+            <End Role="PROJACT" EntitySet="PROJACTs" />
+          </AssociationSet>
+          <AssociationSet Name="RPP" Association="Self.RPP">
+            <End Role="PROJECT" EntitySet="PROJECTs" />
+            <End Role="PROJECT1" EntitySet="PROJECTs" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SAMPLEModelStoreContainer" CdmEntityContainer="SAMPLEEntities">
+          <EntitySetMapping Name="ACTs">
+            <EntityTypeMapping TypeName="SAMPLEModel.ACT">
+              <MappingFragment StoreEntitySet="ACT">
+                <ScalarProperty Name="ACTNO" ColumnName="ACTNO" />
+                <ScalarProperty Name="ACTKWD" ColumnName="ACTKWD" />
+                <ScalarProperty Name="ACTDESC" ColumnName="ACTDESC" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CATALOGs">
+            <EntityTypeMapping TypeName="SAMPLEModel.CATALOG">
+              <MappingFragment StoreEntitySet="CATALOG">
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="CATLOG" ColumnName="CATLOG" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CUSTOMERs">
+            <EntityTypeMapping TypeName="SAMPLEModel.CUSTOMER">
+              <MappingFragment StoreEntitySet="CUSTOMER">
+                <ScalarProperty Name="CID" ColumnName="CID" />
+                <ScalarProperty Name="INFO" ColumnName="INFO" />
+                <ScalarProperty Name="HISTORY" ColumnName="HISTORY" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DEPARTMENTs">
+            <EntityTypeMapping TypeName="SAMPLEModel.DEPARTMENT">
+              <MappingFragment StoreEntitySet="DEPARTMENT">
+                <ScalarProperty Name="DEPTNO" ColumnName="DEPTNO" />
+                <ScalarProperty Name="DEPTNAME" ColumnName="DEPTNAME" />
+                <ScalarProperty Name="MGRNO" ColumnName="MGRNO" />
+                <ScalarProperty Name="ADMRDEPT" ColumnName="ADMRDEPT" />
+                <ScalarProperty Name="LOCATION" ColumnName="LOCATION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EMP_PHOTO">
+            <EntityTypeMapping TypeName="SAMPLEModel.EMP_PHOTO">
+              <MappingFragment StoreEntitySet="EMP_PHOTO">
+                <ScalarProperty Name="EMPNO" ColumnName="EMPNO" />
+                <ScalarProperty Name="PHOTO_FORMAT" ColumnName="PHOTO_FORMAT" />
+                <ScalarProperty Name="PICTURE" ColumnName="PICTURE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EMP_RESUME">
+            <EntityTypeMapping TypeName="SAMPLEModel.EMP_RESUME">
+              <MappingFragment StoreEntitySet="EMP_RESUME">
+                <ScalarProperty Name="EMPNO" ColumnName="EMPNO" />
+                <ScalarProperty Name="RESUME_FORMAT" ColumnName="RESUME_FORMAT" />
+                <ScalarProperty Name="RESUME" ColumnName="RESUME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EMPLOYEEs">
+            <EntityTypeMapping TypeName="SAMPLEModel.EMPLOYEE">
+              <MappingFragment StoreEntitySet="EMPLOYEE">
+                <ScalarProperty Name="EMPNO" ColumnName="EMPNO" />
+                <ScalarProperty Name="FIRSTNME" ColumnName="FIRSTNME" />
+                <ScalarProperty Name="MIDINIT" ColumnName="MIDINIT" />
+                <ScalarProperty Name="LASTNAME" ColumnName="LASTNAME" />
+                <ScalarProperty Name="WORKDEPT" ColumnName="WORKDEPT" />
+                <ScalarProperty Name="PHONENO" ColumnName="PHONENO" />
+                <ScalarProperty Name="HIREDATE" ColumnName="HIREDATE" />
+                <ScalarProperty Name="JOB" ColumnName="JOB" />
+                <ScalarProperty Name="EDLEVEL" ColumnName="EDLEVEL" />
+                <ScalarProperty Name="SEX" ColumnName="SEX" />
+                <ScalarProperty Name="BIRTHDATE" ColumnName="BIRTHDATE" />
+                <ScalarProperty Name="SALARY" ColumnName="SALARY" />
+                <ScalarProperty Name="BONUS" ColumnName="BONUS" />
+                <ScalarProperty Name="COMM" ColumnName="COMM" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="INVENTORies">
+            <EntityTypeMapping TypeName="SAMPLEModel.INVENTORY">
+              <MappingFragment StoreEntitySet="INVENTORY">
+                <ScalarProperty Name="PID" ColumnName="PID" />
+                <ScalarProperty Name="QUANTITY" ColumnName="QUANTITY" />
+                <ScalarProperty Name="LOCATION" ColumnName="LOCATION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PRODUCTs">
+            <EntityTypeMapping TypeName="SAMPLEModel.PRODUCT">
+              <MappingFragment StoreEntitySet="PRODUCT">
+                <ScalarProperty Name="PID" ColumnName="PID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+                <ScalarProperty Name="PROMOPRICE" ColumnName="PROMOPRICE" />
+                <ScalarProperty Name="PROMOSTART" ColumnName="PROMOSTART" />
+                <ScalarProperty Name="PROMOEND" ColumnName="PROMOEND" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PRODUCTSUPPLIERs">
+            <EntityTypeMapping TypeName="SAMPLEModel.PRODUCTSUPPLIER">
+              <MappingFragment StoreEntitySet="PRODUCTSUPPLIER">
+                <ScalarProperty Name="PID" ColumnName="PID" />
+                <ScalarProperty Name="SID" ColumnName="SID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PROJACTs">
+            <EntityTypeMapping TypeName="SAMPLEModel.PROJACT">
+              <MappingFragment StoreEntitySet="PROJACT">
+                <ScalarProperty Name="PROJNO" ColumnName="PROJNO" />
+                <ScalarProperty Name="ACTNO" ColumnName="ACTNO" />
+                <ScalarProperty Name="ACSTAFF" ColumnName="ACSTAFF" />
+                <ScalarProperty Name="ACSTDATE" ColumnName="ACSTDATE" />
+                <ScalarProperty Name="ACENDATE" ColumnName="ACENDATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PROJECTs">
+            <EntityTypeMapping TypeName="SAMPLEModel.PROJECT">
+              <MappingFragment StoreEntitySet="PROJECT">
+                <ScalarProperty Name="PROJNO" ColumnName="PROJNO" />
+                <ScalarProperty Name="PROJNAME" ColumnName="PROJNAME" />
+                <ScalarProperty Name="DEPTNO" ColumnName="DEPTNO" />
+                <ScalarProperty Name="RESPEMP" ColumnName="RESPEMP" />
+                <ScalarProperty Name="PRSTAFF" ColumnName="PRSTAFF" />
+                <ScalarProperty Name="PRSTDATE" ColumnName="PRSTDATE" />
+                <ScalarProperty Name="PRENDATE" ColumnName="PRENDATE" />
+                <ScalarProperty Name="MAJPROJ" ColumnName="MAJPROJ" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PURCHASEORDERs">
+            <EntityTypeMapping TypeName="SAMPLEModel.PURCHASEORDER">
+              <MappingFragment StoreEntitySet="PURCHASEORDER">
+                <ScalarProperty Name="POID" ColumnName="POID" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+                <ScalarProperty Name="CUSTID" ColumnName="CUSTID" />
+                <ScalarProperty Name="ORDERDATE" ColumnName="ORDERDATE" />
+                <ScalarProperty Name="PORDER" ColumnName="PORDER" />
+                <ScalarProperty Name="COMMENTS" ColumnName="COMMENTS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SUPPLIERS">
+            <EntityTypeMapping TypeName="SAMPLEModel.SUPPLIER">
+              <MappingFragment StoreEntitySet="SUPPLIERS">
+                <ScalarProperty Name="SID" ColumnName="SID" />
+                <ScalarProperty Name="ADDR" ColumnName="ADDR" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ADEFUSRs">
+            <EntityTypeMapping TypeName="SAMPLEModel.ADEFUSR">
+              <MappingFragment StoreEntitySet="ADEFUSR">
+                <ScalarProperty Name="WORKDEPT" ColumnName="WORKDEPT" />
+                <ScalarProperty Name="NO_OF_EMPLOYEES" ColumnName="NO_OF_EMPLOYEES" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EMPPROJACTs">
+            <EntityTypeMapping TypeName="SAMPLEModel.EMPPROJACT">
+              <MappingFragment StoreEntitySet="EMPPROJACT">
+                <ScalarProperty Name="EMPNO" ColumnName="EMPNO" />
+                <ScalarProperty Name="PROJNO" ColumnName="PROJNO" />
+                <ScalarProperty Name="ACTNO" ColumnName="ACTNO" />
+                <ScalarProperty Name="EMPTIME" ColumnName="EMPTIME" />
+                <ScalarProperty Name="EMSTDATE" ColumnName="EMSTDATE" />
+                <ScalarProperty Name="EMENDATE" ColumnName="EMENDATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ORGs">
+            <EntityTypeMapping TypeName="SAMPLEModel.ORG">
+              <MappingFragment StoreEntitySet="ORG">
+                <ScalarProperty Name="DEPTNUMB" ColumnName="DEPTNUMB" />
+                <ScalarProperty Name="DEPTNAME" ColumnName="DEPTNAME" />
+                <ScalarProperty Name="MANAGER" ColumnName="MANAGER" />
+                <ScalarProperty Name="DIVISION" ColumnName="DIVISION" />
+                <ScalarProperty Name="LOCATION" ColumnName="LOCATION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="STAFFs">
+            <EntityTypeMapping TypeName="SAMPLEModel.STAFF">
+              <MappingFragment StoreEntitySet="STAFF">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="DEPT" ColumnName="DEPT" />
+                <ScalarProperty Name="JOB" ColumnName="JOB" />
+                <ScalarProperty Name="YEARS" ColumnName="YEARS" />
+                <ScalarProperty Name="SALARY" ColumnName="SALARY" />
+                <ScalarProperty Name="COMM" ColumnName="COMM" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="STAFFGs">
+            <EntityTypeMapping TypeName="SAMPLEModel.STAFFG">
+              <MappingFragment StoreEntitySet="STAFFG">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="DEPT" ColumnName="DEPT" />
+                <ScalarProperty Name="JOB" ColumnName="JOB" />
+                <ScalarProperty Name="YEARS" ColumnName="YEARS" />
+                <ScalarProperty Name="SALARY" ColumnName="SALARY" />
+                <ScalarProperty Name="COMM" ColumnName="COMM" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
